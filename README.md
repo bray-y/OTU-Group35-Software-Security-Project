@@ -62,8 +62,17 @@ spo-system/
 │
 ├── tests/
 │   ├── test_signature_failure.py
-│   ├── test_replay_attack.py
-│   └── test_integrity_attack.py
+│   ├── test_integrity_attack.py
+│
+├── security_tests/ 
+│   ├── run_all_tests.py
+│   ├── tamper_test.py
+│   ├── replay_test.py
+│   ├── integrity_test.py
+│   ├── signature_failure_test.py
+│   ├── replay_detector.py
+│   ├── reset_outputs.py
+│   └── outputs/
 │
 ├── keys/
 │
@@ -126,4 +135,28 @@ python -m purchasing_service.verify_order
 2026-04-05 20:15:15 | supervisor | approved_order | 12345
 2026-04-05 20:15:20 | purchasing | verified_order | 12345
 ```
-Audit logs provide traceability for all system actions.
+Provides:
+
+- Traceability
+- Accountability
+- Non-repudiation
+
+## Security Testing (Attack Simulations)
+The system includes automated security tests that simulate real-world attacks.
+### Run All Tests (Recommended)
+```bash
+python security_tests/run_all_tests.py
+```
+## Implemented Attack Tests
+### 1. Tampering Attack
+Modifies encrypted order data
+- Expected result: ```Signature verification failed```
+### 2. Replay Attack
+Reuses a previously processed order
+- Expected result: ```Duplicate order detected```
+### 3. Integrity Attack
+Modifies order fields (e.g., quantity)
+- Expected result: ```Invalid purchaser signature```
+### 4. Signature Forgery Test
+Uses invalid signature data
+- Expected result: ```Signature valid: False```
