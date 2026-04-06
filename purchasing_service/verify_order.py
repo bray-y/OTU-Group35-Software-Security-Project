@@ -7,6 +7,8 @@ from security.timestamp_utils import validate_timestamp
 from shared.models import to_json
 
 
+print("[STATUS] Verifying order...")
+
 with open("order_to_purchasing.json") as f:
     package = json.load(f)
 
@@ -28,7 +30,6 @@ valid1 = verify_signature(
     "keys/purchaser_public.pem"
 )
 
-
 valid2 = verify_signature(
     order_json,
     package["supervisor_signature"],
@@ -43,7 +44,7 @@ if valid1 and valid2:
         order["order_id"]
     )
 
-    print("Order fully verified")
+    print("[SUCCESS] Order fully verified")
 
 else:
-    print("Signature verification failed")
+    print("[FAILED] Signature verification failed")

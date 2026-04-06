@@ -4,6 +4,8 @@ from crypto.aes_utils import encrypt_data, generate_aes_key
 from security.audit_log import log_event
 import json
 
+print("[STATUS] Preparing and signing order...")
+
 order = create_order()
 
 order_json = to_json(order)
@@ -27,4 +29,4 @@ with open("order_to_supervisor.json", "w") as f:
 
 log_event("purchaser", "created_order", order["order_id"])
 
-print("Order sent to supervisor")
+print("[STATUS] Order sent to supervisor")
