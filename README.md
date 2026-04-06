@@ -65,9 +65,6 @@ spo-system/
 │   ├── test_replay_attack.py
 │   └── test_integrity_attack.py
 │
-├── diagrams/
-│   └── sequence_diagram.txt
-│
 ├── keys/
 │
 ├── generate_keys.py
