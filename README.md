@@ -1,6 +1,6 @@
 # Secure Purchase Order (SPO) System
 Software and Computer Security
-Group 35 - CRN 75327
+- Group 35 - CRN 75327
 
 ## Overview
 The **Secure Purchase Order (SPO) System** is a cryptographically secure workflow designed to protect the creation, approval, and verification of purchase orders within an organization.
