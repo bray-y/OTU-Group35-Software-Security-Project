@@ -145,7 +145,7 @@ Provides:
 The system includes automated security tests that simulate real-world attacks.
 ### Run All Tests (Recommended)
 ```bash
-python security_tests/run_all_tests.py
+python -m security_tests.run_all_tests
 ```
 ## Implemented Attack Tests
 ### 1. Tampering Attack
