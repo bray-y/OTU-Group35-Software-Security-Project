@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPO System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>SPO System</h1>
+  </header>
+
+  <main>
+    <div class="card-grid">
+      <div class="card" onclick="openPage('purchaser')">
+        <h2>Purchaser</h2>
+        <p>Create and send secure orders.</p>
+      </div>
+      <div class="card" onclick="openPage('supervisor')">
+        <h2>Supervisor</h2>
+        <p>Load and approve orders securely.</p>
+      </div>
+      <div class="card" onclick="openPage('dept')">
+        <h2>Purchasing Dept</h2>
+        <p>Verify finalized orders.</p>
+      </div>
+      <div class="card" onclick="openPage('audit')">
+        <h2>Audit Log</h2>
+        <p>View system audit logs.</p>
+      </div>
+    </div>
+
+    <div id="role-container"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
