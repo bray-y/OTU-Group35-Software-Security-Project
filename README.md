@@ -129,6 +129,83 @@ python -m purchasing_service.verify_order
 - verifies both signatures
 - logs successful transaction
 
+## Security Testing (Attack Simulations)
+The system includes automated security tests that simulate real-world attacks.
+### Run All Tests (Recommended)
+```bash
+python -m security_tests.run_all_tests
+```
+## Implemented Attack Tests
+
+### 1. Tampering Attack
+Modifies encrypted order data
+- Expected result: ```Signature verification failed```
+
+### What the attack does
+
+The test:
+
+```bash
+data["order"]["ciphertext"] = "tampereddata"
+```
+This modifies the encrypted order data after it was signed.
+
+This simulates:
+- A malicious attacker intercepting the message
+- Changing its contents before it reaches the supervisor
+
+### 2. Replay Attack
+Reuses a previously processed order
+- Expected result: ```Duplicate order detected```
+
+### What the attack does
+
+The test:
+
+```bash
+shutil.copy("order_to_purchasing.json", "replay_order.json")
+```
+Then processes the same order twice.
+
+This simulates:
+
+- An attacker re-sending a valid transaction
+- Attempting duplicate purchases or fraud
+
+### 3. Integrity Attack
+Modifies order fields (e.g., quantity)
+- Expected result: ```Invalid purchaser signature```
+
+### What the attack does
+
+The test:
+
+```bash
+package["order"]["quantity"] = 999
+```
+This modifies a valid order field (not ciphertext).
+
+This simulates:
+
+- Insider attack
+- Data manipulation after decryption
+- Changing order details (e.g., price, quantity)
+
+### 4. Signature Forgery Test
+Uses invalid signature data
+- Expected result: ```Signature valid: False```
+
+### What the attack does
+
+The test:
+```bash
+fake_data = "fake order"
+sig = "deadbeef"
+```
+This simulates:
+- Forged signature
+- Attacker pretending to be a valid user
+
 ## Example Audit Log Entry
 ```bash
 2026-04-05 20:15:10 | purchaser | created_order | 12345
@@ -140,23 +217,3 @@ Provides:
 - Traceability
 - Accountability
 - Non-repudiation
-
-## Security Testing (Attack Simulations)
-The system includes automated security tests that simulate real-world attacks.
-### Run All Tests (Recommended)
-```bash
-python -m security_tests.run_all_tests
-```
-## Implemented Attack Tests
-### 1. Tampering Attack
-Modifies encrypted order data
-- Expected result: ```Signature verification failed```
-### 2. Replay Attack
-Reuses a previously processed order
-- Expected result: ```Duplicate order detected```
-### 3. Integrity Attack
-Modifies order fields (e.g., quantity)
-- Expected result: ```Invalid purchaser signature```
-### 4. Signature Forgery Test
-Uses invalid signature data
-- Expected result: ```Signature valid: False```
