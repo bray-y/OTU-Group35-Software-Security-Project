@@ -36,21 +36,17 @@ The project is divided into modular components responsible for specific function
 spo-system/
 │
 ├── purchaser_client/
-│   ├── create_order.py
-│   └── ui_purchaser.py
+│   └── create_order.py
 │
 ├── supervisor_service/
-│   ├── approve_order.py
-│   └── attack_test_tamper.py
+│   └── approve_order.py
 │
 ├── purchasing_service/
-│   ├── verify_order.py
-│   └── attack_test_replay.py
+│   └── verify_order.py
 │
 ├── crypto/
 │   ├── rsa_utils.py
-│   ├── aes_utils.py
-│   └── key_manager.py
+│   └── aes_utils.py
 │
 ├── security/
 │   ├── auth.py
@@ -59,10 +55,6 @@ spo-system/
 │
 ├── shared/
 │   └── models.py
-│
-├── tests/
-│   ├── test_signature_failure.py
-│   ├── test_integrity_attack.py
 │
 ├── security_tests/ 
 │   ├── run_all_tests.py
