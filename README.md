@@ -1,5 +1,5 @@
 # Secure Purchase Order (SPO) System
-Software and Computer Security
+Software and Computer Security ~ Ontario Tech Project
 - Group 35 - CRN 75327
 
 ## Overview
